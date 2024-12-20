@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Heart Attack Prediction System</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #ff4d4d;
+            margin-bottom: 20px;
+        }
+
+        .model-section {
+            margin-bottom: 20px;
+        }
+
+        .model-section h3 {
+            color: #333;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .model-section p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .accuracy {
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .resources {
+            margin-top: 30px;
+        }
+
+        .resources a {
+            display: block;
+            color: #007bff;
+            text-decoration: none;
+            margin-bottom: 10px;
+        }
+
+        .resources a:hover {
+            text-decoration: underline;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .back-btn:hover {
+            background-color: #e63b3b;
+        }
+
+        .comparison {
+            margin-top: 30px;
+            background-color: #f8f8f8;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .comparison table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        td {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>About the Heart Attack Prediction Model</h2>
+
+        <!-- Overview Section -->
+        <div class="model-section">
+            <h3>Overview</h3>
+            <p>
+                The Heart Attack Prediction Model is a machine learning-driven solution that analyzes key health metrics to evaluate an individual's risk of a heart attack. By combining advanced algorithms and predictive analytics, this model empowers users to make data-informed decisions about their cardiovascular health and lifestyle choices.
+            </p>
+        </div>
+
+        <!-- Purpose Section -->
+        <div class="model-section">
+            <h3>Purpose</h3>
+            <p>
+                The model is designed to provide a user-friendly interface for assessing heart attack risks, helping individuals better understand their health. The objective is to guide users towards preventive care, lifestyle adjustments, and early medical interventions if necessary. The tool is not a substitute for professional medical consultation but an additional layer of support for proactive health management.
+            </p>
+        </div>
+
+        <!-- Technology Stack Section -->
+        <div class="model-section">
+            <h3>Technology Stack</h3>
+            <p>
+                The prediction model incorporates a range of machine learning algorithms for high accuracy and efficiency:
+                <ul>
+                    <li>Random Forest Classifier</li>
+                    <li>XGBoost</li>
+                    <li>CatBoost</li>
+                    <li>LightGBM</li>
+                    <li>Support Vector Classifier (SVC)</li>
+                    <li>Multi-layer Perceptron (MLP)</li>
+                </ul>
+                Each of these algorithms was chosen based on its strengths in handling complex data, speed, and accuracy.
+            </p>
+        </div>
+
+        <!-- Data Handling Section -->
+        <div class="model-section">
+            <h3>Data Handling</h3>
+            <p>
+                The model was trained on a comprehensive dataset that includes critical health parameters, such as:
+                <ul>
+                    <li>Age and Gender</li>
+                    <li>Blood Pressure</li>
+                    <li>Cholesterol Levels</li>
+                    <li>Fasting Blood Sugar</li>
+                    <li>Maximum Heart Rate</li>
+                    <li>Chest Pain Type and other factors</li>
+                </ul>
+                Data preprocessing techniques like scaling, encoding, and oversampling (SMOTE) were applied to ensure the accuracy and reliability of the model.
+            </p>
+        </div>
+
+        <!-- Explainability Section -->
+        <div class="model-section">
+            <h3>Explainability</h3>
+            <p>
+                Transparency in machine learning models is critical, especially in healthcare. The Heart Attack Prediction Model uses Explainable AI (XAI) techniques such as SHAP (Shapley Additive Explanations) and LIME (Local Interpretable Model-agnostic Explanations) to provide users with insights into how their input data affects predictions. This ensures that users can understand the rationale behind their risk assessments.
+            </p>
+        </div>
+
+        <!-- Disclaimer Section -->
+        <div class="model-section">
+            <h3>Disclaimer</h3>
+            <p>
+                This tool is not intended to replace medical advice. Always consult with a qualified healthcare professional for any health concerns. The results provided by this model are based on patterns observed in the data and should be used as a supplementary tool to guide further health evaluations.
+            </p>
+        </div>
+
+        <!-- Model Comparison Section -->
+        <div class="comparison">
+            <h3>Model Comparison Table</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>Accuracy</th>
+                        <th>Strengths</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>CatBoost</td>
+                        <td>89%</td>
+                        <td>Efficient with categorical data, low preprocessing overhead.</td>
+                    </tr>
+                    <tr>
+                        <td>XGBoost</td>
+                        <td>91%</td>
+                        <td>Excellent performance, widely used for structured data problems.</td>
+                    </tr>
+                    <tr>
+                        <td>Random Forest</td>
+                        <td>87%</td>
+                        <td>Handles missing data well and reduces overfitting.</td>
+                    </tr>
+                    <tr>
+                        <td>Logistic Regression</td>
+                        <td>85%</td>
+                        <td>Simple and interpretable, effective for binary classification.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Contact Us Section -->
+        <div class="model-section">
+            <h3>Contact Us</h3>
+            <p>
+                For feedback or inquiries regarding the Heart Attack Prediction Model, please email us at <a href="mailto:saishanmuk872@gmail.com">saishanmuk872@gmail.com</a>.
+            </p>
+        </div>
+
+        <!-- External Resources Section -->
+        <div class="resources">
+            <h3>Further Reading and Resources</h3>
+            <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5392512/" target="_blank">Understanding Heart Attack Risks - NCBI</a>
+            <a href="https://www.kaggle.com/code/prashant111/heart-attack-prediction-using-machine-learning" target="_blank">Heart Attack Prediction with Machine Learning - Kaggle</a>
+            <a href="https://www.who.int/news-room/fact-sheets/detail/cardiovascular-diseases-(cvds)" target="_blank">World Health Organization - Cardiovascular Diseases</a>
+        </div>
+
+        <!-- Back Button -->
+        <button class="back-btn" onclick="goBack()">Go Back</button>
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
+</body>
+</html>

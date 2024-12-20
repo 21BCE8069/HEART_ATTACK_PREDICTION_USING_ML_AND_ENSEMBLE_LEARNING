@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Heart Attack Prediction Assistance System - Empowering you with insights for better heart health using advanced machine learning models.">
+    <meta name="keywords" content="Heart Attack Prediction, Machine Learning, Healthcare, AI, Health Metrics">
+    <title>Heart Attack Prediction System</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    
+    <!-- Integrated CSS -->
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* Body Styling */
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #fafafa;
+        }
+
+        /* Header Section */
+        header {
+            background-color: #ff4d4d;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .navbar h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style-type: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffe6e6;
+            text-decoration: underline;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to bottom right, #ffcccc, #ffffff);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero-content h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #ff4d4d;
+            text-shadow: 1px 1px 2px #fff;
+        }
+
+        .hero-content p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        .cta-button {
+            padding: 15px 30px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 1.2em;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #ff1a1a;
+            transform: translateY(-2px);
+            cursor: pointer;
+        }
+
+        /* Options Section */
+        .options {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 50px 0;
+        }
+
+        .option {
+            margin: 20px;
+        }
+
+        .option-button {
+            padding: 20px 30px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 1.2em;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .option-button:hover {
+            background-color: #ff1a1a;
+            transform: translateY(-2px);
+            cursor: pointer;
+        }
+
+        /* Key Features Section */
+        .features {
+            display: flex;
+            justify-content: space-around;
+            padding: 50px;
+            background-color: #f7f7f7;
+            flex-wrap: wrap;
+        }
+
+        .feature-item {
+            text-align: center;
+            max-width: 200px;
+            margin: 20px;
+            transition: transform 0.3s;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-item img {
+            max-width: 100px;
+            margin-bottom: 20px;
+        }
+
+        .feature-item h3 {
+            font-size: 1.4em;
+            color: #ff4d4d;
+            margin-bottom: 10px;
+        }
+
+        .feature-item p {
+            font-size: 1em;
+            color: #555;
+        }
+
+        /* Footer Section */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+
+        footer a {
+            color: #ffcccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+
+            .hero-content h2 {
+                font-size: 2em;
+            }
+
+            .hero-content p {
+                font-size: 1.1em;
+            }
+
+            .features {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .feature-item {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="navbar">
+            <h1>Heart Attack Prediction System</h1>
+            <nav aria-label="Main Navigation">
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('about') }}">About</a></li>
+                    <li><a href="{{ url_for('features') }}">Features</a></li>
+                    <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Empowering you with insights for better heart health</h2>
+            <p>Welcome to the Heart Attack Prediction System. Using advanced machine learning algorithms, our tool helps assess your risk of a heart attack based on key health metrics. Early detection can save lives—let's start your journey to better heart health today!</p>
+            <!-- Updated Options Section (replacing 'Get Started' button) -->
+            <a href="#options" class="cta-button">Explore Options</a>
+        </div>
+    </section>
+
+    <!-- Options Section -->
+    <section id="options" class="options">
+        <div class="option">
+            <a href="{{ url_for('predict') }}" class="option-button">Heart Attack Predictor</a>
+        </div>
+    </section>
+
+    <!-- Key Features Section -->
+    <section class="features">
+        <div class="feature-item">
+            <img src="{{ url_for('static', filename='feature1.jpeg') }}" alt="An icon symbolizing accurate predictions from machine learning models." loading="lazy">
+            <h3>Accurate Predictions</h3>
+            <p>Using state-of-the-art machine learning models.</p>
+        </div>
+        <div class="feature-item">
+            <img src="{{ url_for('static', filename='feature2.jpeg') }}" alt="A user-friendly interface icon." loading="lazy">
+            <h3>User-Friendly Interface</h3>
+            <p>Designed for ease of use by everyone.</p>
+        </div>
+        <div class="feature-item">
+            <img src="{{ url_for('static', filename='feature3.jpeg') }}" alt="An icon depicting data privacy and security." loading="lazy">
+            <h3>Privacy First</h3>
+            <p>Your data is secure and confidential.</p>
+        </div>
+        <div class="feature-item">
+            <img src="{{ url_for('static', filename='feature4.jpeg') }}" alt="A stopwatch indicating instant results." loading="lazy">
+            <h3>Instant Results</h3>
+            <p>Get immediate feedback on your heart health.</p>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Heart Attack Prediction System. All Rights Reserved.</p>
+        <p><a href="{{ url_for('privacy') }}">Privacy Policy</a> | <a href="{{ url_for('contact') }}">Contact Us</a></p>
+    </footer>
+
+</body>
+</html>

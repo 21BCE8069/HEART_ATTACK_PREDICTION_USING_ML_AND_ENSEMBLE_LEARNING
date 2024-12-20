@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Attack Prediction Form</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #ff4d4d;
+            margin-bottom: 20px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        form input, form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        form input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+        form input:focus, form select:focus {
+            border-color: #ff4d4d;
+            outline: none;
+        }
+
+        .submit-btn {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #ff1a1a;
+        }
+
+        .submit-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Heart Attack Prediction</h2>
+        <form method="POST" action="/predict" onsubmit="return validateForm()">
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" min="29" max="120" placeholder="Enter age" required>
+
+            <label for="sex">Sex</label>
+            <select id="sex" name="sex" required>
+                <option value="1">Male</option>
+                <option value="0">Female</option>
+            </select>
+
+            <label for="cp">Chest Pain Type</label>
+            <select id="cp" name="cp" required>
+                <option value="0">Typical Angina</option>
+                <option value="1">Atypical Angina</option>
+                <option value="2">Non-Anginal Pain</option>
+                <option value="3">Asymptomatic</option>
+            </select>
+
+            <label for="trtbps">Resting Blood Pressure (mmHg)</label>
+            <input type="number" id="trtbps" name="trtbps" min="50" max="250" placeholder="Enter resting blood pressure" required>
+
+            <label for="chol">Cholesterol Level (mg/dL)</label>
+            <input type="number" id="chol" name="chol" min="50" max="500" placeholder="Enter cholesterol level" required>
+
+            <label for="fbs">Fasting Blood Sugar > 120 mg/dL</label>
+            <select id="fbs" name="fbs" required>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <label for="restecg">Resting Electrocardiographic Results</label>
+            <select id="restecg" name="restecg" required>
+                <option value="0">Normal</option>
+                <option value="1">ST-T Wave Abnormality</option>
+                <option value="2">Left Ventricular Hypertrophy</option>
+            </select>
+
+            <label for="thalachh">Max Heart Rate (bpm)</label>
+            <input type="number" id="thalachh" name="thalachh" min="60" max="220" placeholder="Enter max heart rate" required>
+
+            <label for="exng">Exercise Induced Angina</label>
+            <select id="exng" name="exng" required>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <label for="oldpeak">Oldpeak</label>
+            <input type="number" id="oldpeak" name="oldpeak" min="0" max="6" step="0.1" placeholder="Enter oldpeak value" required>
+
+            <label for="slp">Slope of the Peak Exercise ST Segment</label>
+            <select id="slp" name="slp" required>
+                <option value="0">Upsloping</option>
+                <option value="1">Flat</option>
+                <option value="2">Downsloping</option>
+            </select>
+
+            <label for="caa">Number of Major Vessels (0-3)</label>
+            <input type="number" id="caa" name="caa" min="0" max="3" placeholder="Enter number of major vessels" required>
+
+            <label for="thall">Thalassemia</label>
+            <select id="thall" name="thall" required>
+                <option value="1">Normal</option>
+                <option value="2">Fixed Defect</option>
+                <option value="3">Reversible Defect</option>
+            </select>
+
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            // Implement additional client-side validation if needed
+            return true; // Allows form submission
+        }
+    </script>
+</body>
+</html>

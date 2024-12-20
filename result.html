@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <title>Prediction Results</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h1 {
+            color: #343a40;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .results-table th,
+        .results-table td {
+            text-align: left;
+            padding: 10px;
+            border: 1px solid #dee2e6;
+        }
+
+        .results-table th {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+
+        .results-table td {
+            background-color: #f8f9fa;
+        }
+
+        .positive {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        .negative {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .back-button {
+            display: block;
+            width: 100%;
+            max-width: 200px;
+            margin: 30px auto 0;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #ffffff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
+        .feature-importance-image {
+            width: 100%;
+            max-width: 700px;
+            margin-top: 20px;
+            border: 2px solid #dee2e6;
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Heart Attack Prediction Results</h1>
+        
+        {% if predictions %}
+            <h2>Predictions</h2>
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th>Model Name</th>
+                        <th>Prediction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for model, prediction in predictions.items() %}
+                        <tr>
+                            <td>{{ model }}</td>
+                            <td>
+                                {% if prediction == "Yes" %}
+                                    <span class="positive">More chance of heart attack</span>
+                                {% else %}
+                                    <span class="negative">Less chance of heart attack</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p style="text-align: center; color: #dc3545;">No predictions available. Please try again.</p>
+        {% endif %}
+        
+        {% if explanations %}
+            <h2>Model Explanations</h2>
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th>Model Name</th>
+                        <th>Feature Importance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for model, explanation in explanations.items() %}
+                        <tr>
+                            <td>{{ model }}</td>
+                            <td>
+                                {% if explanation == "No explanation available" %}
+                                    <p>No explanation available</p>
+                                {% else %}
+                                    <ul>
+                                        {% for feature, importance in explanation.items() %}
+                                            <li>{{ feature }}: {{ importance }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+        
+        {% if feature_importance_images %}
+            <h2>Feature Importance Visualizations</h2>
+            {% for model_name, image_data in feature_importance_images.items() %}
+                <h3>{{ model_name }}</h3>
+                <img src="data:image/png;base64,{{ image_data }}" alt="{{ model_name }} Feature Importance" class="feature-importance-image">
+            {% endfor %}
+        {% endif %}
+
+        <a href="{{ url_for('home') }}" class="back-button">Go Back</a>
+    </div>
+</body>
+</html>
